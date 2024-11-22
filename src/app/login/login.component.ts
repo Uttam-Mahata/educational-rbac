@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router'; // Import Router for navigation
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -36,7 +36,16 @@ export class LoginComponent {
     const { username, password } = this.sampleCredentials[this.selectedRole];
 
     if (this.username === username && this.password === password) {
+      // Save session info with expiration time
+      const currentTime = new Date().getTime();
+      const expirationTime = currentTime + 60 * 60 * 1000; // 1 hour from now
+
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('role', this.selectedRole);
+      localStorage.setItem('loginExpiration', expirationTime.toString());
+
       alert(`${this.selectedRole} Login successful!`);
+      
       if (this.selectedRole === 'Admin') {
         this.router.navigate(['/dashboard']); // Navigate to the dashboard for Admin
       } else {
