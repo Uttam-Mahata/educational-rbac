@@ -47,7 +47,7 @@ export class LoginComponent {
       alert(`${this.selectedRole} Login successful!`);
       
       if (this.selectedRole === 'Admin') {
-        this.router.navigate(['/dashboard']); // Navigate to the dashboard for Admin
+        this.router.navigate(['/dashboard/home']); // Navigate to the dashboard for Admin
       } else {
         alert(`${this.selectedRole} Dashboard is not implemented yet.`);
       }

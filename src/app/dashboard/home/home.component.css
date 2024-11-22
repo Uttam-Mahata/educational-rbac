@@ -1,0 +1,92 @@
+.custom-card {
+    color: white;
+  
+    border: 2px solid transparent;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    background: linear-gradient(to right, #3b6eed, #f4e5d6) padding-box,
+    linear-gradient(to right, #3166ec, #f1e9e1) border-box;
+
+
+    /* Default */
+}
+
+
+
+.custom-card:hover {
+ 
+    background: linear-gradient(to right, #3166ec, #f3912e) padding-box,
+    linear-gradient(to right, #3166ec, #f3912e) border-box;
+
+    box-shadow: 0 0 15px rgba(255, 117, 140, 0.6);
+}
+
+.custom-card .card-body {
+    padding: 20px;
+}
+
+.custom-card i {
+    color: #ff758c;
+    transition: color 0.3s ease;
+}
+
+.custom-card:hover i {
+    color: #ff3b6c;
+}
+
+
+
+
+/* List Section Cards */
+.list-teacher,
+.list-student,
+.list-course {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.list-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.list-group {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-group-item {
+    background: white;
+    border: none;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.list-group-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Profile Pic Styling */
+.profile-pic {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    border-radius: 50%;
+}
+

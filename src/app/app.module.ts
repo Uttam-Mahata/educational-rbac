@@ -11,7 +11,6 @@ import { ManageUsersRolesComponent } from './dashboard/manage-users-roles/manage
 import { ManagePermissionsComponent } from './dashboard/manage-permissions/manage-permissions.component';
 import { AuditLogsComponent } from './dashboard/audit-logs/audit-logs.component';
 import { ManageNotificationsComponent } from './dashboard/manage-notifications/manage-notifications.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +25,8 @@ import { ManageNotificationsComponent } from './dashboard/manage-notifications/m
     imports: [
         BrowserModule,
         AppRoutingModule,
-        FormsModule
+        FormsModule,
+        
     ],
   providers: [],
   bootstrap: [AppComponent]
