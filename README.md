@@ -1,6 +1,4 @@
-Based on the provided files, here is a README for your project:
 
----
 
 # Educational RBAC
 
