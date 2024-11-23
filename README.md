@@ -1,27 +1,71 @@
-# EducationalRbac
+Based on the provided files, here is a README for your project:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10.
+---
 
-## Development server
+# Educational RBAC
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Overview
 
-## Code scaffolding
+This project is an educational role-based access control (RBAC) system developed using Angular. It is designed to demonstrate the concepts of user roles, permissions, and authentication within an educational environment.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Features
 
-## Build
+- **User Authentication**: Login functionality with role-based access.
+- **Dashboard**: A comprehensive dashboard for managing users, roles, permissions, and more.
+- **Role Management**: Admin panel to manage different user roles and their permissions.
+- **Course Management**: Manage courses and view related statistics.
+- **Audit Logs**: Track user activities and changes.
+- **Notifications**: Manage notifications for different user roles.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Installation
 
-## Running unit tests
+To get the project running locally, follow these steps:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/Uttam-Mahata/educational-rbac.git
+   cd educational-rbac
+   ```
 
-## Running end-to-end tests
+2. **Install the dependencies**:
+   ```bash
+   npm install
+   ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+3. **Run the application**:
+   ```bash
+   ng serve
+   ```
+   The application will be served at `http://localhost:4200/`.
 
-## Further help
+## Usage
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. **Login**: Use the following credentials based on the role you want to test:
+   - Admin: `admin/admin123`
+   - Teacher: `teacher/teacher123`
+   - Student: `student/student123`
+   - Parent: `parent/parent123`
+
+2. **Dashboard**: Depending on the role, navigate through the dashboard to manage users, roles, permissions, and other functionalities.
+
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes.
+4. Commit your changes (`git commit -m 'Add some feature'`).
+5. Push to the branch (`git push origin feature-branch`).
+6. Open a pull request.
+
+
+
+## Acknowledgments
+
+- Icons by FontAwesome.
+- Logos and images from [Winners Education](https://winnerseducation.org/).
+
+---
+
+Feel free to modify and expand upon this README as needed for your project.
