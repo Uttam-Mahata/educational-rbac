@@ -1,0 +1,199 @@
+<div class="container-fluid py-4">
+    <!-- Header Section -->
+    <div class="row mb-4 align-items-center">
+      <div class="col">
+        <h1 class="h3 mb-0">Manage Courses</h1>
+        <p class="text-muted">View and manage your course catalog</p>
+      </div>
+      <div class="col-auto">
+        <button class="btn btn-primary">
+          <i class="fas fa-plus me-2"></i>Add New Course
+        </button>
+      </div>
+    </div>
+  
+    <!-- Filters and Search -->
+    <div class="row mb-4 g-3">
+      <div class="col-md-6">
+        <div class="input-group">
+          <span class="input-group-text bg-white">
+            <i class="fas fa-search text-muted"></i>
+          </span>
+          <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Search courses..."
+            [(ngModel)]="searchQuery"
+          >
+        </div>
+      </div>
+      <div class="col-auto">
+        <div class="btn-group">
+          <button class="btn btn-outline-secondary">
+            Category <i class="fas fa-chevron-down ms-2"></i>
+          </button>
+          <button class="btn btn-outline-secondary">
+            Status <i class="fas fa-chevron-down ms-2"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Course Grid -->
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" *ngFor="let course of filteredCourses">
+        <div class="card h-100 border-0 shadow-sm hover-shadow">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="card-title mb-0">{{ course.title }}</h5>
+              <div class="dropdown">
+                <button class="btn btn-link text-muted p-0" data-bs-toggle="dropdown" title="Course options">
+                  <i class="fas fa-ellipsis-v"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li>
+                    <a class="dropdown-item" (click)="openEditModal(course)">
+                      <i class="fas fa-edit me-2"></i>Edit
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="openAssignModal(course)">
+                      <i class="fas fa-user-plus me-2"></i>Assign Teacher
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item text-danger" (click)="deleteCourse(course.id)">
+                      <i class="fas fa-trash me-2"></i>Delete
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted">Instructor</span>
+                <span class="fw-medium">{{ course.instructor || 'Not Assigned' }}</span>
+              </div>
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted">Category</span>
+                <span class="fw-medium">{{ course.category }}</span>
+              </div>
+            </div>
+  
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-clock text-muted me-2"></i>
+                  <span>{{ course.duration }}</span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-users text-muted me-2"></i>
+                  <span>{{ course.enrolledStudents }} students</span>
+                </div>
+              </div>
+            </div>
+  
+            <div class="d-flex justify-content-between align-items-center">
+              <span [class]="'badge ' + (course.status === 'Active' ? 'bg-success' : 'bg-warning')">
+                {{ course.status }}
+              </span>
+              <small class="text-muted">
+                Updated {{ course.lastUpdated | date }}
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Pagination -->
+    <div class="d-flex justify-content-between align-items-center mt-4">
+      <p class="text-muted mb-0">
+        Showing {{ filteredCourses.length }} courses
+      </p>
+      <div class="btn-group">
+        <button class="btn btn-outline-secondary btn-sm">
+          <i class="fas fa-chevron-left me-2"></i>Previous
+        </button>
+        <button class="btn btn-outline-secondary btn-sm">
+          Next<i class="fas fa-chevron-right ms-2"></i>
+        </button>
+      </div>
+    </div>
+  
+    <!-- Assign Teacher Modal -->
+    <div class="modal" [class.show]="showAssignModal" [style.display]="showAssignModal ? 'block' : 'none'">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Assign Teacher</h5>
+            <button type="button" class="btn-close" (click)="showAssignModal = false" title="Close modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="list-group">
+              <button 
+                *ngFor="let teacher of teachers"
+                class="list-group-item list-group-item-action"
+                (click)="assignTeacher(teacher)"
+              >
+                {{ teacher }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Edit Course Modal -->
+    <div class="modal" [class.show]="showEditModal" [style.display]="showEditModal ? 'block' : 'none'">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Course</h5>
+            <button type="button" class="btn-close" (click)="showEditModal = false" title="Close modal"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="courseForm" (ngSubmit)="saveCourse()">
+              <div class="mb-3">
+                <label class="form-label" for="courseTitle">Title</label>
+                <input type="text" id="courseTitle" class="form-control" formControlName="title" title="Course title" placeholder="Enter course title">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Category</label>
+                <input type="text" class="form-control" formControlName="category" title="Course category" placeholder="Enter course category">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Duration</label>
+                <input type="text" class="form-control" formControlName="duration" title="Course duration" placeholder="Enter course duration">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Status</label>
+                <select class="form-select" formControlName="status" title="Course status">
+                  <option value="Active">Active</option>
+                  <option value="Draft">Draft</option>
+                </select>
+              </div>
+              <div class="text-end">
+                <button type="button" class="btn btn-secondary me-2" (click)="showEditModal = false">
+                  Cancel
+                </button>
+                <button type="submit" class="btn btn-primary" [disabled]="!courseForm.valid">
+                  Save Changes
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Modal Backdrop -->
+    <div 
+      class="modal-backdrop fade show" 
+      *ngIf="showAssignModal || showEditModal"
+      (click)="showAssignModal = false; showEditModal = false"
+    ></div>
+  </div>

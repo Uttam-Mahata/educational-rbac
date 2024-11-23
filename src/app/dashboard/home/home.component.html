@@ -1,132 +1,161 @@
 <div class="container my-4">
-    <div class="row">
-      <!-- Total Summary Cards -->
-      <div class="col-md-6 mt-2">
-        <div class="card custom-card text-center">
-          <div class="card-body">
-            <i class="fa fa-user-graduate fa-3x mb-3 text-light"></i>
-            <h5 class="card-title">Total Students</h5>
-            <p class="card-text fs-4">1,200</p>
-          </div>
+  <div class="row">
+    <!-- Total Summary Cards -->
+    <div class="col-md-6 mt-2">
+      <div class="card custom-card text-center">
+        <div class="card-body">
+          <i class="fa fa-user-graduate fa-3x mb-3 text-light"></i>
+          <h5 class="card-title">Total Students</h5>
+          <p class="card-text fs-4">1,200</p>
         </div>
       </div>
-      <div class="col-md-6 mt-2">
-        <div class="card custom-card text-center">
-          <div class="card-body">
-            <i class="fa fa-chalkboard-teacher fa-3x mb-3 text-light"></i>
-            <h5 class="card-title">Total Teachers</h5>
-            <p class="card-text fs-4">150</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 mt-2">
-        <div class="card custom-card text-center">
-          <div class="card-body">
-            <i class="fa fa-users fa-3x mb-3 text-light"></i>
-            <h5 class="card-title">Total Parents</h5>
-            <p class="card-text fs-4">800</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Total Courses -->
-
-      <div class="col-md-6 mt-2">
-        <div class="card custom-card text-center">
-          <div class="card-body">
-            <i class="fa fa-book fa-3x mb-3 text-light"></i>
-            <h5 class="card-title">Total Courses</h5>
-            <p class="card-text fs-4">20</p>
-          </div>
-        </div>
-      </div>
-      
     </div>
-  
-    <!-- Lists Section -->
-    <div class="row my-5">
-      <!-- Best Teachers -->
-      <div class="col-md-6 mt-2">
-        <div class="list-teacher">
-          <h4 class="list-header">Best Teachers</h4>
-          <ul class="list-group">
-            <li class="list-group-item">
-              <span class="profile-pic bg-primary text-light me-3">JD</span> John Doe
-            </li>
-            <li class="list-group-item">
-              <span class="profile-pic bg-primary text-light me-3">JS</span> Jane Smith
-            </li>
-            <li class="list-group-item">
-              <span class="profile-pic bg-primary text-light me-3">MJ</span> Michael Johnson
-            </li>
-          </ul>
+    <div class="col-md-6 mt-2">
+      <div class="card custom-card text-center">
+        <div class="card-body">
+          <i class="fa fa-chalkboard-teacher fa-3x mb-3 text-light"></i>
+          <h5 class="card-title">Total Teachers</h5>
+          <p class="card-text fs-4">150</p>
         </div>
       </div>
-  
-      <!-- Best Students -->
-      <div class="col-md-6 mt-2">
-        <div class="list-student">
-          <h4 class="list-header">Best Students</h4>
-          <ul class="list-group">
-            <li class="list-group-item">
-              <span class="profile-pic bg-success text-light me-3">EB</span> Emily Brown
-            </li>
-            <li class="list-group-item">
-              <span class="profile-pic bg-success text-light me-3">JW</span> James Wilson
-            </li>
-            <li class="list-group-item">
-              <span class="profile-pic bg-success text-light me-3">OG</span> Olivia Garcia
-            </li>
-          </ul>
-        </div>
-      </div>
-  
-      <!-- Popular Courses -->
-      <div class="col-md-6 mt-2">
-        <div class="list-course">
-          <h4 class="list-header">Popular Courses</h4>
-          <ul class="list-group">
-            <li class="list-group-item">
-              <span class="profile-pic bg-warning text-light me-3">WD</span> Web Development
-            </li>
-            <li class="list-group-item">
-              <span class="profile-pic bg-warning text-light me-3">DS</span> Data Science
-            </li>
-            <li class="list-group-item">
-              <span class="profile-pic bg-warning text-light me-3">AI</span> AI & Machine Learning
-            </li>
-          </ul>
+    </div>
+    <div class="col-md-6 mt-2">
+      <div class="card custom-card text-center">
+        <div class="card-body">
+          <i class="fa fa-users fa-3x mb-3 text-light"></i>
+          <h5 class="card-title">Total Parents</h5>
+          <p class="card-text fs-4">800</p>
         </div>
       </div>
     </div>
 
-    <div class="row my-5">
-        <!-- Course-wise Students Chart -->
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Course-wise Students</h5>
-              <canvas id="courseWiseChart"></canvas>
-            </div>
-          </div>
-        </div>
-      
-        <!-- Today's Attendance Chart -->
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Today's Attendance</h5>
-              <canvas id="attendanceChart"></canvas>
-            </div>
-          </div>
+    <!-- Total Courses -->
+
+    <div class="col-md-6 mt-2">
+      <div class="card custom-card text-center">
+        <div class="card-body">
+          <i class="fa fa-book fa-3x mb-3 text-light"></i>
+          <h5 class="card-title">Total Courses</h5>
+          <p class="card-text fs-4">20</p>
         </div>
       </div>
-      
+    </div>
+
+  </div>
+
+  <!-- Lists Section -->
+  <div class="row my-5">
+    <!-- Best Teachers -->
+    <div class="col-md-6 mt-4">
+      <div class="list-teacher">
+        <h4 class="list-header">Best Teachers</h4>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <span class="profile-pic bg-primary text-light me-3">JD</span> John Doe
+          </li>
+          <li class="list-group-item">
+            <span class="profile-pic bg-primary text-light me-3">JS</span> Jane Smith
+          </li>
+          <li class="list-group-item">
+            <span class="profile-pic bg-primary text-light me-3">MJ</span> Michael Johnson
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Best Students -->
+    <div class="col-md-6 mt-4">
+      <div class="list-student">
+        <h4 class="list-header">Best Students</h4>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <span class="profile-pic bg-success text-light me-3">EB</span> Emily Brown
+          </li>
+          <li class="list-group-item">
+            <span class="profile-pic bg-success text-light me-3">JW</span> James Wilson
+          </li>
+          <li class="list-group-item">
+            <span class="profile-pic bg-success text-light me-3">OG</span> Olivia Garcia
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Popular Courses -->
+    <div class="col-md-6 mt-4">
+      <div class="list-course">
+        <h4 class="list-header">Popular Courses</h4>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <span class="profile-pic bg-warning text-light me-3">WD</span> Web Development
+          </li>
+          <li class="list-group-item">
+            <span class="profile-pic bg-warning text-light me-3">DS</span> Data Science
+          </li>
+          <li class="list-group-item">
+            <span class="profile-pic bg-warning text-light me-3">AI</span> AI & Machine Learning
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Recent Activities -->
+    <div class="col-md-6 mt-4">
+      <div class="list-activity">
+        <h4 class="list-header">Recent Activities</h4>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <span class="profile-pic bg-info text-light me-3">JD</span> John Doe added a new course
+          </li>
+          <li class="list-group-item">
+            <span class="profile-pic bg-info text-light me-3">JS</span> Jane Smith added a new student
+          </li>
+          <li class="list-group-item">
+            <span class="profile-pic bg-info text-light me-3">MJ</span> Michael Johnson added a new teacher
+          </li>
+        </ul>
 
 
-    
-   
-  
+
+        <!-- View All activities button -->
+        <div class="text-center mt-3">
+          <a href="#" class="btn btn-primary">View All Activities</a>
+          </div>
+
+
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row my-5">
+    <!-- Course-wise Students Chart -->
+    <div class="col-md-6 mt-4">
+      <div class="card p-4">
+        <div class="card-body" style="height: 500px;">
+          <h5 class="card-title">Course-wise Students</h5>
+          <canvas id="courseWiseChart" style="height: 100%;"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Today's Attendance Chart -->
+    <div class="col-md-6 mt-4">
+      <div class="card p-4">
+        <div class="card-body" style="height: 500px;">
+          <h5 class="card-title">Today's Attendance</h5>
+          <canvas id="attendanceChart" style="height: 100%;"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
 
 </div>
-  

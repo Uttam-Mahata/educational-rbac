@@ -15,9 +15,15 @@ export class DashboardComponent {
     this.isSidebarVisible = !this.isSidebarVisible;
   }
 
+  onNavItemClick() {
+    // Hide sidebar when a navigation item is clicked
+    this.isSidebarVisible = false;
+  }
+
   onLogout() {
-    localStorage.clear(); // Clear session data
+    this.isSidebarVisible = false; // Hide sidebar
+    localStorage.clear();
     alert('Logged out successfully!');
-    this.router.navigate(['/login']); // Redirect to login page
+    this.router.navigate(['/login']);
   }
 }

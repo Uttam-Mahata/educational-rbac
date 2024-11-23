@@ -1,0 +1,115 @@
+:host {
+    display: block;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+  }
+  
+  .hover-shadow {
+    transition: box-shadow 0.3s ease-in-out;
+    
+    &:hover {
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    }
+  }
+  
+  .card {
+    border-radius: 0.75rem;
+    background: white;
+    transition: all 0.3s ease;
+  
+    .card-body {
+      padding: 1.5rem;
+    }
+  
+    .card-title {
+      color: #2d3748;
+      font-weight: 600;
+    }
+  }
+  
+  .badge {
+    padding: 0.5em 1em;
+    font-weight: 500;
+    border-radius: 2rem;
+    
+    &.bg-success {
+      background-color: #d1fae5 !important;
+      color: #065f46;
+    }
+    
+    &.bg-warning {
+      background-color: #fef3c7 !important;
+      color: #92400e;
+    }
+  }
+  
+  .btn-primary {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    
+    &:hover {
+      background-color: #2563eb;
+      border-color: #2563eb;
+    }
+  }
+  
+  .btn-outline-secondary {
+    border-color: #e2e8f0;
+    color: #64748b;
+    font-weight: 500;
+    
+    &:hover {
+      background-color: #f1f5f9;
+      border-color: #e2e8f0;
+      color: #1e293b;
+    }
+  }
+  
+  .input-group {
+    .input-group-text {
+      border-right: 0;
+      padding: 0.75rem 1rem;
+    }
+    
+    .form-control {
+      border-left: 0;
+      padding: 0.75rem 1rem;
+      
+      &:focus {
+        box-shadow: none;
+        border-color: #e2e8f0;
+      }
+    }
+  }
+  
+  .modal {
+    background-color: rgba(0, 0, 0, 0.5);
+    
+    .modal-content {
+        border: none;
+        border-radius: 1rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        
+        .modal-header {
+            border-bottom-color: #dee2e6;
+            padding: 1.5rem;
+            
+            .modal-title {
+            font-weight: 600;
+            }
+        }
+        
+        .modal-body {
+            padding: 1.5rem;
+        }
+        
+        .modal-footer {
+            border-top-color: #dee2e6;
+            padding: 1.5rem;
+        }
+        }
+    }
+    
