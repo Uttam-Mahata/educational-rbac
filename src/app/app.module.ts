@@ -13,6 +13,7 @@ import { ManagePermissionsComponent } from './dashboard/manage-permissions/manag
 import { AuditLogsComponent } from './dashboard/audit-logs/audit-logs.component';
 import { ManageNotificationsComponent } from './dashboard/manage-notifications/manage-notifications.component';
 import { CoursesComponent } from './dashboard/courses/courses.component';
+
 @NgModule({
   declarations: [
     AppComponent,
