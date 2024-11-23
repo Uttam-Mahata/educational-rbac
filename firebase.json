@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/educational-rbac/browser/",
+    "public": "dist/educational-rbac/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
