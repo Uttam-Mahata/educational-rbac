@@ -1,0 +1,61 @@
+.container {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .input-group .input-group-text {
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .table {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .table th {
+    text-align: center;
+  }
+  
+  .table td {
+    vertical-align: middle;
+    text-align: center;
+  }
+  
+  .form-select {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .form-check-input {
+    transform: scale(1.2);
+  }
+  
+  .btn-success,
+  .btn-danger {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .btn-success:hover {
+    background-color: #28a745d9;
+  }
+  
+  .btn-danger:hover {
+    background-color: #dc3545d9;
+  }
+  
+  .pagination .page-link {
+
+    color: #007bff;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  

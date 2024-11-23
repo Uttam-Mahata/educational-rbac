@@ -6,6 +6,7 @@ import { HomeComponent } from './dashboard/home/home.component';
 import { ManageUsersRolesComponent } from './dashboard/manage-users-roles/manage-users-roles.component';
 import { ManagePermissionsComponent } from './dashboard/manage-permissions/manage-permissions.component';
 import { AuditLogsComponent } from './dashboard/audit-logs/audit-logs.component';
+import { CoursesComponent } from './dashboard/courses/courses.component';
 import { ManageNotificationsComponent } from './dashboard/manage-notifications/manage-notifications.component';
 import { AuthGuard } from './authguard.service'; // Import AuthGuard
 
@@ -26,6 +27,8 @@ const routes: Routes = [
       { path: 'manage-permissions', component: ManagePermissionsComponent },
       { path: 'audit-logs', component: AuditLogsComponent },
       { path: 'manage-notifications', component: ManageNotificationsComponent },
+      {path: 'courses', component: CoursesComponent}
+
     ],
   },
   // Default route redirects to login

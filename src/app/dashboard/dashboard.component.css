@@ -1,0 +1,132 @@
+/* Sidebar full height */
+.sidebar-100vh {
+  height: 100vh;
+
+  padding-top: 10px;
+
+  justify-content: space-between;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar Links Styling */
+.sidebar .nav-link {
+  font-size: 16px;
+  color: #e4ecf5;
+  padding: 10px 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Add these styles to your dashboard.component.css */
+
+.toggle-btn {
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.toggle-btn.active {
+  transform: rotate(180deg);
+}
+
+.mobile-menu {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background-color: #f8f9fa;
+}
+
+.mobile-menu.show {
+  display: block;
+  opacity: 1;
+}
+
+/* Optional: Add animation for menu items */
+.mobile-menu .nav-link {
+  transition: all 0.2s ease;
+}
+
+.mobile-menu .nav-link:active {
+  transform: scale(0.98);
+}
+
+/* Style active link */
+.nav-link.active {
+  background-color: #e9ecef;
+  color: #0d6efd;
+}
+
+/* Add shadow to mobile header */
+.fixed-top {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+
+
+.sidebar .nav-link.active {
+  background-color: #007bff;
+  color: #fff;
+
+  border-radius: 5px;
+}
+
+/* Logout Button */
+.sidebar .btn-danger {
+  font-size: 16px;
+  border-radius: 5px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar .btn-danger:hover {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+/* Mobile Sidebar */
+@media (max-width: 768px) {
+    .sidebar-100vh {
+      display: none;
+    }
+  }
+  
+  /* Tablet Navbar Adjustments */
+  @media (max-width: 992px) {
+    .sidebar {
+      flex-direction: row;
+      justify-content: space-around;
+      padding: 10px;
+      height: auto;
+    }
+  
+    .sidebar .nav-link {
+      padding: 5px;
+      font-size: 14px;
+    }
+  }
+  
+  /* Active Link Styling */
+  .nav-link.active {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+  }
+  /* Main content adjustments */
+.main-content {
+  margin-left: 0; /* Default margin for smaller screens */
+}
+
+
+/* Apply margin for large screens and laptops */
+@media (min-width: 992px) {
+  .main-content {
+    margin-left: 300px;
+  }
+}
+
+/* Apply for Tablet also */
+@media (min-width: 768px) {
+  .main-content {
+    margin-left: 300px;
+  }
+}
+
+  
+

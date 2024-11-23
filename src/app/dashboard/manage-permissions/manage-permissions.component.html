@@ -1,1 +1,99 @@
-<p>manage-permissions works!</p>
+<!-- permission-management.component.html -->
+<div class="container-fluid px-4 py-5">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-12 col-md-3">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title mb-4">Role Selection</h5>
+            <div class="role-list">
+              <div *ngFor="let role of roles" 
+                   class="role-item" 
+                   [class.active]="selectedRole?.id === role.id"
+                   (click)="selectRole(role)">
+                <i class="fa" [ngClass]="{
+                  'fa-chalkboard-teacher': role.name === 'Teachers',
+                  'fa-user-graduate': role.name === 'Students',
+                  'fa-users': role.name === 'Parents'
+                }"></i>
+                {{ role.name }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Main Content -->
+      <div class="col-12 col-md-9">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h5 class="card-title mb-0">{{ selectedRole?.name }} Permissions</h5>
+              <button class="btn btn-primary" (click)="savePermissions()">
+                <i class="fa fa-save me-2"></i>Save Changes
+              </button>
+            </div>
+  
+            <div class="table-responsive">
+              <table class="table table-hover permission-table">
+                <thead>
+                  <tr>
+                    <th>Module</th>
+                    <th class="text-center">Read</th>
+                    <th class="text-center">Write</th>
+                    <th class="text-center">Update</th>
+                    <th class="text-center">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let permission of selectedRole?.permissions">
+                    <td>{{ permission.name }}</td>
+                    <td class="text-center">
+                      <div class="form-check">
+                        <input type="checkbox" 
+                               class="form-check-input permission-checkbox" 
+                               [checked]="permission.read"
+                               (change)="updatePermission(permission, 'read')"
+                               title="Read Permission"
+                               aria-label="Read Permission">
+                      </div>
+                    </td>
+                    <td class="text-center">
+                      <div class="form-check">
+                        <input type="checkbox" 
+                               class="form-check-input permission-checkbox" 
+                               [checked]="permission.write"
+                               (change)="updatePermission(permission, 'write')"
+                               title="Write Permission"
+                               aria-label="Write Permission">
+                      </div>
+                    </td>
+                    <td class="text-center">
+                      <div class="form-check">
+                        <input type="checkbox" 
+                               class="form-check-input permission-checkbox" 
+                               [checked]="permission.update"
+                               (change)="updatePermission(permission, 'update')"
+                               title="Update Permission"
+                               aria-label="Update Permission">
+                      </div>
+                    </td>
+                    <td class="text-center">
+                      <div class="form-check">
+                        <input type="checkbox" 
+                               class="form-check-input permission-checkbox" 
+                               [checked]="permission.delete"
+                               (change)="updatePermission(permission, 'delete')"
+                               title="Delete Permission"
+                               aria-label="Delete Permission">
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

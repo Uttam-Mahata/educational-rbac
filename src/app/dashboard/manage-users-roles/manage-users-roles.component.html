@@ -1,1 +1,206 @@
-<p>manage-users-roles works!</p>
+<div class="container mt-4">
+    <!-- Search and Add User Section -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div class="input-group rounded shadow-sm" style="width: 40%;">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search users..."
+          aria-label="Search"
+        />
+        <span class="input-group-text">
+          <i class="fa fa-search"></i>
+        </span>
+      </div>
+      <button
+        class="btn btn-primary rounded-pill shadow-sm"
+        (click)="addNewUser()"
+      >
+        <i class="fa fa-user-plus me-2"></i>Add New User
+      </button>
+    </div>
+  
+    <!-- Users Table -->
+    <div class="table-responsive shadow-sm rounded">
+      <table class="table table-hover table-striped align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th class="text-center">Name</th>
+            <th class="text-center">Email</th>
+            <th class="text-center">Role</th>
+            <th class="text-center">Status</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Existing Users -->
+          <tr *ngFor="let user of users; let i = index">
+            <td class="text-center">
+              <div *ngIf="!user.isEditing">{{ user.name }}</div>
+              <div *ngIf="user.isEditing">
+                <input
+                  type="text"
+                  class="form-control form-control-sm mx-auto"
+                  style="max-width: 200px;"
+                  [(ngModel)]="user.name"
+                  title="Edit Name"
+                  placeholder="Enter name"
+                />
+              </div>
+            </td>
+            <td class="text-center">
+              <div *ngIf="!user.isEditing">{{ user.email }}</div>
+              <div *ngIf="user.isEditing">
+                <input
+                  type="email"
+                  class="form-control form-control-sm mx-auto"
+                  style="max-width: 200px;"
+                  [(ngModel)]="user.email"
+                  title="Edit Email"
+                  placeholder="Enter email"
+                />
+              </div>
+            </td>
+            <td class="text-center">
+              <select
+                class="form-select form-select-sm mx-auto"
+                style="max-width: 150px;"
+                [(ngModel)]="user.role"
+                [disabled]="!user.isEditing"
+                title="Select Role"
+              >
+                <option>Admin</option>
+                <option>Teacher</option>
+                <option>Student</option>
+                <option>Parent</option>
+              </select>
+            </td>
+            <td class="text-center">
+              <div class="form-check form-switch d-flex justify-content-center">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  [(ngModel)]="user.status"
+                  [disabled]="!user.isEditing"
+                  title="Toggle Status"
+                />
+              </div>
+            </td>
+            <td class="text-center">
+              <div class="btn-group">
+                <button
+                  class="btn btn-sm"
+                  [ngClass]="user.isEditing ? 'btn-success' : 'btn-primary'"
+                  (click)="user.isEditing ? saveUser(i) : editUser(i)"
+                  title="{{ user.isEditing ? 'Save' : 'Edit' }}"
+                >
+                  <i
+                    class="fa"
+                    [ngClass]="user.isEditing ? 'fa-save' : 'fa-edit'"
+                  ></i>
+                </button>
+                <button
+                  class="btn btn-sm btn-danger"
+                  (click)="deleteUser(i)"
+                  title="Delete User"
+                >
+                  <i class="fa fa-trash"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+  
+          <!-- Add New User Row -->
+          <tr *ngIf="isAddingNew">
+            <td class="text-center">
+              <input
+                type="text"
+                class="form-control form-control-sm mx-auto"
+                style="max-width: 200px;"
+                [(ngModel)]="newUser.name"
+                placeholder="Enter name"
+              />
+            </td>
+            <td class="text-center">
+              <input
+                type="email"
+                class="form-control form-control-sm mx-auto"
+                style="max-width: 200px;"
+                [(ngModel)]="newUser.email"
+                placeholder="Enter email"
+              />
+            </td>
+            <td class="text-center">
+              <select
+                class="form-select form-select-sm mx-auto select-max-width"
+                [(ngModel)]="newUser.role"
+                title="Select Role"
+              >
+                <option>Admin</option>
+                <option>Teacher</option>
+                <option>Student</option>
+                <option>Parent</option>
+              </select>
+            </td>
+            <td class="text-center">
+              <div class="form-check form-switch d-flex justify-content-center">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  [(ngModel)]="newUser.status"
+                  title="Toggle Status"
+                  placeholder="Status"
+                />
+              </div>
+            </td>
+            <td class="text-center">
+              <div class="btn-group">
+                <button
+                  class="btn btn-sm btn-success"
+                  (click)="saveNewUser()"
+                  title="Save"
+                >
+                  <i class="fa fa-save"></i>
+                </button>
+                <button
+                  class="btn btn-sm btn-danger"
+                  (click)="cancelNewUser()"
+                  title="Cancel"
+                >
+                  <i class="fa fa-times"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="d-flex justify-content-center mt-4">
+      <nav aria-label="Page navigation">
+        <ul class="pagination pagination-sm">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">1</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">2</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">3</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+        </nav>
+        
+  </div>
+  

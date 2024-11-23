@@ -1,1 +1,166 @@
-<p>home works!</p>
+<!-- home.component.html -->
+<div class="container my-4">
+  <!-- Summary Cards Row -->
+  <div class="row">
+    <div class="col-md-6 mt-2">
+      <div class="card custom-card text-center">
+        <div class="card-body">
+          <i class="fas fa-user-graduate fa-3x mb-3 text-light"></i>
+          <h5 class="card-title">Total Students</h5>
+          <p class="card-text fs-4">1,200</p>
+          <small class="text-light">↑ 15% from last month</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mt-2">
+      <div class="card custom-card text-center">
+        <div class="card-body">
+          <i class="fas fa-chalkboard-teacher fa-3x mb-3 text-light"></i>
+          <h5 class="card-title">Total Teachers</h5>
+          <p class="card-text fs-4">150</p>
+          <small class="text-light">↑ 5% from last month</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mt-2">
+      <div class="card custom-card text-center">
+        <div class="card-body">
+          <i class="fas fa-users fa-3x mb-3 text-light"></i>
+          <h5 class="card-title">Total Parents</h5>
+          <p class="card-text fs-4">800</p>
+          <small class="text-light">Active users: 650</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mt-2">
+      <div class="card custom-card text-center">
+        <div class="card-body">
+          <i class="fas fa-book fa-3x mb-3 text-light"></i>
+          <h5 class="card-title">Total Courses</h5>
+          <p class="card-text fs-4">20</p>
+          <small class="text-light">2 new this month</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts Row -->
+  <div class="row my-4">
+    <div class="col-md-6 mt-2">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Course-wise Students</h5>
+          <canvas id="courseWiseChart"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mt-2">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Today's Attendance</h5>
+          <canvas id="attendanceChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Additional Charts Row -->
+  <div class="row my-4">
+    <div class="col-md-6 mt-2">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Student Performance Trend</h5>
+          <canvas id="performanceChart"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mt-2">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Monthly Enrollment Trend</h5>
+          <canvas id="enrollmentTrendChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lists Section -->
+  <div class="row my-4">
+    <!-- Best Teachers -->
+    <div class="col-md-6 mt-2">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0">Top Performing Teachers</h5>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <div>
+                <span class="badge bg-primary rounded-circle me-2">JD</span>
+                John Doe
+              </div>
+              <span class="badge bg-success rounded-pill">98% Success Rate</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <div>
+                <span class="badge bg-primary rounded-circle me-2">JS</span>
+                Jane Smith
+              </div>
+              <span class="badge bg-success rounded-pill">95% Success Rate</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <div>
+                <span class="badge bg-primary rounded-circle me-2">MJ</span>
+                Michael Johnson
+              </div>
+              <span class="badge bg-success rounded-pill">92% Success Rate</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Activities -->
+    <div class="col-md-6 mt-2">
+      <div class="card">
+        <div class="card-header bg-info text-white">
+          <h5 class="mb-0">Recent Activities</h5>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <span class="badge bg-info rounded-circle me-2">JD</span>
+                  John Doe added a new course
+                </div>
+                <small class="text-muted">2 hours ago</small>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <span class="badge bg-info rounded-circle me-2">JS</span>
+                  Jane Smith added a new student
+                </div>
+                <small class="text-muted">4 hours ago</small>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <span class="badge bg-info rounded-circle me-2">MJ</span>
+                  Michael Johnson updated course material
+                </div>
+                <small class="text-muted">6 hours ago</small>
+              </div>
+            </li>
+          </ul>
+          <div class="text-center mt-3">
+            <button class="btn btn-info text-white">View All Activities</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
