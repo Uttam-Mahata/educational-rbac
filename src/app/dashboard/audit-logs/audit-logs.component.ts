@@ -1,19 +1,13 @@
 // audit-logs.component.ts
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 
 interface AuditLog {
   id: number;
-  action: string;
-  module: string;
-  description: string;
-  userId: string;
-  userName: string;
-  userRole: string;
-  ipAddress: string;
   timestamp: Date;
-  status: 'success' | 'failure' | 'warning';
-  details?: any;
+  user: string;
+  action: string;
+  details: string;
+  status: 'success' | 'warning' | 'error';
 }
 
 @Component({
@@ -22,142 +16,88 @@ interface AuditLog {
   styleUrls: ['./audit-logs.component.scss']
 })
 export class AuditLogsComponent implements OnInit {
-  auditLogs: AuditLog[] = [];
-  filteredLogs: AuditLog[] = [];
-  filterForm: FormGroup;
-  selectedLog: AuditLog | null = null;
-  showDetails: boolean = false;
-  
-  readonly modules = [
-    'All',
-    'Authentication',
-    'User Management',
-    'Permissions',
-    'Notifications',
-    'Course Management',
-    'Student Records',
-    'Attendance',
-    'Grades'
-  ];
+  logs: AuditLog[] = [];
+  Math = Math;
+  searchTerm: string = '';
+  selectedStatus: string = 'all';
+  selectedDate: string = 'all';
+  currentPage: number = 1;
+  pageSize: number = 10;
 
-  readonly actions = [
-    'All',
-    'Create',
-    'Read',
-    'Update',
-    'Delete',
-    'Login',
-    'Logout',
-    'Permission Change',
-    'Password Reset',
-    'Export'
-  ];
-
-  readonly userRoles = [
-    'All',
-    'Admin',
-    'Teacher',
-    'Student',
-    'Parent',
-    'Staff'
-  ];
-
-  constructor(private fb: FormBuilder) {
-    this.filterForm = this.fb.group({
-      module: ['All'],
-      action: ['All'],
-      userRole: ['All'],
-      startDate: [''],
-      endDate: [''],
-      searchTerm: ['']
-    });
+  ngOnInit() {
+    // Simulate API call
+    this.logs = this.getSampleLogs();
   }
 
-  ngOnInit(): void {
-    // Mock data - replace with actual API call
-    this.auditLogs = this.generateMockLogs();
-    this.filteredLogs = [...this.auditLogs];
+  get filteredLogs(): AuditLog[] {
+    return this.logs
+      .filter(log => {
+        const matchesSearch = !this.searchTerm || 
+          log.user.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          log.action.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          log.details.toLowerCase().includes(this.searchTerm.toLowerCase());
 
-    // Subscribe to form changes for filtering
-    this.filterForm.valueChanges.subscribe(() => {
-      this.applyFilters();
-    });
-  }
+        const matchesStatus = this.selectedStatus === 'all' || log.status === this.selectedStatus;
 
-  generateMockLogs(): AuditLog[] {
-    const logs: AuditLog[] = [];
-    const actions = ['Create', 'Update', 'Delete', 'Read', 'Login', 'Logout'];
-    const statuses: ('success' | 'failure' | 'warning')[] = ['success', 'failure', 'warning'];
-    
-    for (let i = 1; i <= 20; i++) {
-      logs.push({
-        id: i,
-        action: actions[Math.floor(Math.random() * actions.length)],
-        module: this.modules[Math.floor(Math.random() * (this.modules.length - 1)) + 1],
-        description: `User performed ${actions[Math.floor(Math.random() * actions.length)]} operation`,
-        userId: `USER${Math.floor(1000 + Math.random() * 9000)}`,
-        userName: `User ${i}`,
-        userRole: this.userRoles[Math.floor(Math.random() * (this.userRoles.length - 1)) + 1],
-        ipAddress: `192.168.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`,
-        timestamp: new Date(Date.now() - Math.floor(Math.random() * 7 * 24 * 60 * 60 * 1000)),
-        status: statuses[Math.floor(Math.random() * statuses.length)],
-        details: {
-          browser: 'Chrome',
-          os: 'Windows 10',
-          additionalInfo: 'Sample additional information'
+        let matchesDate = true;
+        if (this.selectedDate !== 'all') {
+          const today = new Date();
+          const logDate = new Date(log.timestamp);
+          if (this.selectedDate === 'today') {
+            matchesDate = logDate.toDateString() === today.toDateString();
+          } else if (this.selectedDate === 'week') {
+            const weekAgo = new Date(today.setDate(today.getDate() - 7));
+            matchesDate = logDate >= weekAgo;
+          }
         }
+
+        return matchesSearch && matchesStatus && matchesDate;
       });
+  }
+
+  get paginatedLogs(): AuditLog[] {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    return this.filteredLogs.slice(startIndex, startIndex + this.pageSize);
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.filteredLogs.length / this.pageSize);
+  }
+
+  private getSampleLogs(): AuditLog[] {
+    return [
+      {
+        id: 1,
+        timestamp: new Date(),
+        user: 'John Doe',
+        action: 'Login',
+        details: 'User logged in successfully',
+        status: 'success'
+      },
+      {
+        id: 2,
+        timestamp: new Date(),
+        user: 'Jane Smith',
+        action: 'Create Course',
+        details: 'Created new course: Angular Basics',
+        status: 'success'
+      },
+      // Add more sample logs as needed
+    ];
+  }
+
+  getStatusClass(status: string): string {
+    switch (status) {
+      case 'success': return 'text-success';
+      case 'warning': return 'text-warning';
+      case 'error': return 'text-danger';
+      default: return '';
     }
-    
-    return logs.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime());
   }
 
-  applyFilters(): void {
-    const filters = this.filterForm.value;
-    
-    this.filteredLogs = this.auditLogs.filter(log => {
-      return (filters.module === 'All' || log.module === filters.module) &&
-             (filters.action === 'All' || log.action === filters.action) &&
-             (filters.userRole === 'All' || log.userRole === filters.userRole) &&
-             (!filters.startDate || new Date(log.timestamp) >= new Date(filters.startDate)) &&
-             (!filters.endDate || new Date(log.timestamp) <= new Date(filters.endDate)) &&
-             (!filters.searchTerm || 
-              log.userName.toLowerCase().includes(filters.searchTerm.toLowerCase()) ||
-              log.description.toLowerCase().includes(filters.searchTerm.toLowerCase()) ||
-              log.userId.toLowerCase().includes(filters.searchTerm.toLowerCase()));
-    });
-  }
-
-  viewDetails(log: AuditLog): void {
-    this.selectedLog = log;
-    this.showDetails = true;
-  }
-
-  closeDetails(): void {
-    this.showDetails = false;
-    this.selectedLog = null;
-  }
-
-  exportLogs(): void {
-    // Implement export functionality
-    console.log('Exporting logs:', this.filteredLogs);
-  }
-
-  getStatusClass(status: 'success' | 'failure' | 'warning'): string {
-    const classes = {
-      'success': 'text-success',
-      'failure': 'text-danger',
-      'warning': 'text-warning'
-    };
-    return classes[status] || '';
-  }
-
-  getStatusIcon(status: 'success' | 'failure' | 'warning'): string {
-    const icons = {
-      'success': 'fa-check-circle',
-      'failure': 'fa-times-circle',
-      'warning': 'fa-exclamation-circle'
-    };
-    return icons[status] || '';
+  changePage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+    }
   }
 }
