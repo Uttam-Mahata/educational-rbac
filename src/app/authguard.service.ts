@@ -13,8 +13,7 @@ export class AuthGuard implements CanActivate {
     const currentTime = new Date().getTime();
 
     if (!isLoggedIn || currentTime > expirationTime) {
-      alert('Your session has expired. Please log in again.');
-      localStorage.clear(); // Clear session if expired
+     
       this.router.navigate(['/login']); // Redirect to login
       return false;
     }
