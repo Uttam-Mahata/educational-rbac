@@ -11,34 +11,30 @@ flowchart TD
     B --> |Authentication Failed| D[Access Denied]
     
     C --> |Admin| E[Admin Dashboard]
-    E --> AdminFeatures[
-        - User Management
-        - Role Configuration
-        - Permission Settings
-        - Audit Logs
-        - Course Statistics
-    ]
+    E --> AdminFeatures["Admin Features
+    • User Management
+    • Role Configuration
+    • Permission Settings
+    • Audit Logs
+    • Course Statistics"]
     
     C --> |Teacher| F[Teacher Dashboard]
-    F --> TeacherFeatures[
-        - Course Management
-        - Student Progress Tracking
-        - Student Enrollment
-    ]
+    F --> TeacherFeatures["Teacher Features
+    • Course Management
+    • Student Progress Tracking
+    • Student Enrollment"]
     
     C --> |Student| G[Student Dashboard]
-    G --> StudentFeatures[
-        - View Enrolled Courses
-        - Track Academic Progress
-        - Receive Notifications
-    ]
+    G --> StudentFeatures["Student Features
+    • View Enrolled Courses
+    • Track Academic Progress
+    • Receive Notifications"]
     
     C --> |Parent| H[Parent Dashboard]
-    H --> ParentFeatures[
-        - Monitor Child's Performance
-        - Receive Student Notifications
-        - View Academic Progress
-    ]
+    H --> ParentFeatures["Parent Features
+    • Monitor Child's Performance
+    • Receive Student Notifications
+    • View Academic Progress"]
     
     subgraph Authorization
         direction LR
