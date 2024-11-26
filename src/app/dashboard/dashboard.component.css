@@ -121,12 +121,7 @@
   }
 }
 
-/* Apply for Tablet also */
-@media (min-width: 768px) {
-  .main-content {
-    margin-left: 295px;
-  }
-}
+
 
 
 
