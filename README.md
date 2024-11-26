@@ -4,6 +4,53 @@
 
 The **Educational Role-Based Access Control (RBAC)** system is a web application developed using **Angular** to demonstrate the concepts of **user roles**, **permissions**, and **authentication** within an educational environment. This system allows institutions (such as schools or universities) to manage user access to various resources based on their roles, ensuring the right level of permissions for different types of users. The system is designed to offer flexibility and security in managing user roles and permissions within an educational setting.
 
+```mermaid
+flowchart TD
+    A[User Login] --> B{Authentication}
+    B --> |Authentication Successful| C{User Role}
+    B --> |Authentication Failed| D[Access Denied]
+    
+    C --> |Admin| E[Admin Dashboard]
+    E --> AdminFeatures[
+        - User Management
+        - Role Configuration
+        - Permission Settings
+        - Audit Logs
+        - Course Statistics
+    ]
+    
+    C --> |Teacher| F[Teacher Dashboard]
+    F --> TeacherFeatures[
+        - Course Management
+        - Student Progress Tracking
+        - Student Enrollment
+    ]
+    
+    C --> |Student| G[Student Dashboard]
+    G --> StudentFeatures[
+        - View Enrolled Courses
+        - Track Academic Progress
+        - Receive Notifications
+    ]
+    
+    C --> |Parent| H[Parent Dashboard]
+    H --> ParentFeatures[
+        - Monitor Child's Performance
+        - Receive Student Notifications
+        - View Academic Progress
+    ]
+    
+    subgraph Authorization
+        direction LR
+        PermissionCheck[Permission Validation]
+        RoleBasedAccess[Role-Based Access Control]
+    end
+    
+    C --> Authorization
+    Authorization --> |Permissions Verified| I[Resource Access]
+    Authorization --> |Permissions Denied| J[Access Restricted]
+```
+
 ---
 
 ## Features
